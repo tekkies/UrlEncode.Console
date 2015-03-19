@@ -8,15 +8,14 @@ namespace UrlEncode.Console
     {
         private static void Main(string[] args)
         {
-            var stringBuilder = new StringBuilder();
-            var next = System.Console.Read();
-            while (next != -1)
+            var accumulator = new StringBuilder();
+            var read = System.Console.Read();
+            while (read != -1)
             {
-                var ch = Convert.ToChar(next);
-                stringBuilder.Append(ch);
-                next = System.Console.Read();
+                accumulator.Append(Convert.ToChar(read));
+                read = System.Console.Read();
             }
-            var output = HttpUtility.UrlEncode(stringBuilder.ToString());
+            var output = HttpUtility.UrlEncode(accumulator.ToString().Trim());
             System.Console.Write(output);
         }
     }
